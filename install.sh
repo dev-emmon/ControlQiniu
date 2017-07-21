@@ -2,6 +2,7 @@
 
 # 首先删除已经安装的相关包
 sudo apt-get -y remove ffmpeg x264 libav-tools libvpx-dev libx264-dev
+sudo apt-get -y install libx264-dev
 
 # 更新软件源
 sudo apt-get update
@@ -35,10 +36,9 @@ npm install fluent-ffmpeg --registry https://registry.npm.taobao.org install exp
 npm install -g pm2 --registry https://registry.npm.taobao.org install express
 
 # 安装 x264
-sudo apt-get -y install libx264-dev
 cd ~/ControlQiniu/
 tar jxvf x264.tar.bz2
-cd x264
+cd x264/
 ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
 make
 sudo make install
@@ -56,15 +56,15 @@ sudo make install
 # 安装 ffmpeg
 cd ~/ControlQiniu
 tar jxvf ffmpeg-3.2.2.tar.bz2
-cd ffmpeg-3.2.2
+cd ffmpeg-3.2.2/
 ./configure --prefix=/usr/local/ffmpeg --enable-gpl --enable-libx264
 make # 这一步可能相当相当漫长
 sudo make install
 
 ffmpeg_home="export FFMPEG_HOME=/usr/local/ffmpeg"
 ffmpeg_path="export PATH=\$FFMPEG_HOME/bin:\$PATH"
-echo $node_home >> ~/.bash_profile
-echo $node_path >> ~/.bash_profile
+echo $ffmpeg_home >> ~/.bash_profile
+echo $ffmpeg_path >> ~/.bash_profile
 cat ~/.bash_profile
 
 # 复制 control_index.js

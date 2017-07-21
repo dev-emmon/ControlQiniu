@@ -31,6 +31,16 @@ var form = {
 
 ```
 
+**主要**
+如果运行 node 程序时报缺少插件
+```
+# 安装 nodejs 插件
+cd ~
+npm install request --registry https://registry.npm.taobao.org install express
+npm install glob --registry https://registry.npm.taobao.org install express
+npm install fluent-ffmpeg --registry https://registry.npm.taobao.org install express
+npm install -g pm2 --registry https://registry.npm.taobao.org install express
+```
 
 
 
@@ -42,8 +52,7 @@ var form = {
 
 
 
-
-
+<!-- 
 2. wget 下载 install.sh 文件
 ```bash
 
@@ -110,4 +119,4 @@ cd ffmpeg
 sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree
 make # 这一步可能相当相当漫长，在我这里跑了有一个多小时
 sudo make install
-```
+``` -->
