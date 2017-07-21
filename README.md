@@ -16,10 +16,20 @@ bash install
 vi /etc/rc.local
 
 # 在 exit0 前面添加如下：
-su - pi -c "/usr/local/node/bin/pm2 start /home/pi/oprint/lib/node/edu_live/index.js"
+su - pi -c "/usr/local/node/bin/pm2 start ~/oprint/lib/node/edu_live/contor_index.js"
 ```
 
+## 修改合资信息
+```bash
+vi ~/oprint/lib/node/edu_live/contor_index.js
 
+var form = {
+    name: 'xxxxxx',
+    uuid: xxxxxxx,
+    type: '2'
+};
+
+```
 
 
 

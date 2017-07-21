@@ -1,4 +1,4 @@
-var glob = require('glob');
+var glob = require('glob')
 var request = require('request');
 var ffmpeg = require('fluent-ffmpeg');
 var fetch_publish_url = 'http://demo.xinqigu.com/api/live/create';
@@ -17,8 +17,8 @@ var headers = {
  'Accept': 'application/x.edu.v1.0.1+json'
 }
 var form = {
-    name: '测试实验室',
-    uuid: '1111',
+    name: '测试实验室2号',
+    uuid: profile.boxid,
     type: '2'
 };
 
@@ -46,9 +46,10 @@ var start = function(fetch_publish_url, form, timeout, filePath){
 // 推送视频流
 function start_command(publish_url, path){
     var command = ffmpeg();
-    command.input(path).inputOptions([
-        '-re'
-    ]).inputFormat('video4linux2')
+    command.input(path)
+    .inputOptions(['-re'])
+    .inputFormat('video4linux2')
+//    .inputOptions(['-s 320*300'])
     .on('start', function(commandLine){
         console.log('Spawned FFmpeg with command:' + commandLine);
     }).on('error', function(err, stdout, stderr){
@@ -57,15 +58,20 @@ function start_command(publish_url, path){
         console.log('stderr:' + stderr);
     }).on('end', function(){
         console.log('Processing finished!');
-    }).videoBitrate(1024) // 比特率 1024
-    .format('flv').fps(30).output(publish_url, { end: true }).run();
+    })
+    //.size('320x300')
+    .videoCodec('libx264')
+    .videoBitrate(1024) // 比特率 1024
+    .format('flv')
+    .fps(30)
+    .output(publish_url, { end: true }).run();
 }
 
 
 /**
 * 遍历文件，创建视频流，并开启推送视频流
 **/
-var pattern = 'C:/Users/Doots/Desktop/新建文件夹/**.txt';
+var pattern = '/dev/video**';
 glob(pattern, {nodir: true}, function (err, files) {
     if (!err) {
         var len = files.length;
@@ -73,6 +79,7 @@ glob(pattern, {nodir: true}, function (err, files) {
         for (var i = 0; i < len; i++) {
             form['index'] = i;
             var filePath = files[len - i -1];
+console.log(filePath);
             start(fetch_publish_url, form, 5000, filePath).then(function(data){
                 // console.log(data['body']);
                 // console.log(data['path']);
