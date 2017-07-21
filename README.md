@@ -9,6 +9,31 @@ wget https://raw.githubusercontent.com/dev-emmon/ControlQiniu/master/install.sh
 bash install
 ```
 
+
+## 添加 开机启动
+```bash
+# 编辑 rc.local
+vi /etc/rc.local
+
+# 在 exit0 前面添加如下：
+su - pi -c "/usr/local/node/bin/pm2 start /home/pi/oprint/lib/node/edu_live/index.js"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2. wget 下载 install.sh 文件
 ```bash
 

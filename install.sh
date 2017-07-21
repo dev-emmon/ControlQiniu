@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get install git
 
 # cd 到 /home/pi目录
-cd /home/pi
+cd ~
 # git 下载必要的软件安装包
 git clone https://github.com/dev-emmon/ControlQiniu.git
 cd ControlQiniu
@@ -28,14 +28,15 @@ echo $node_path >> ~/.bash_profile
 cat ~/.bash_profile
 
 # 安装 nodejs 插件
-cd /home/pi
+cd ~
 npm install request --registry https://registry.npm.taobao.org install express
 npm install glob --registry https://registry.npm.taobao.org install express
 npm install fluent-ffmpeg --registry https://registry.npm.taobao.org install express
+npm install -g pm2 --registry https://registry.npm.taobao.org install express
 
 # 安装 x264
 sudo apt-get -y install libx264-dev
-cd /home/pi/ControlQiniu/
+cd ~/ControlQiniu/
 tar jxvf x264.tar.bz2
 cd x264
 ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
@@ -44,7 +45,7 @@ sudo make install
 
 
 #安装 ffmpeg
-cd /home/pi/ControlQiniu
+cd ~/ControlQiniu
 tar jxvf ffmpeg-3.2.2.tar.bz2
 cd ffmpeg-3.2.2
 ./configure --prefix=/usr/local/ffmpeg --enable-gpl --enable-libx264
