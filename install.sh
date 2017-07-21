@@ -36,13 +36,13 @@ npm install fluent-ffmpeg --registry https://registry.npm.taobao.org install exp
 # 安装 x264
 sudo apt-get -y install libx264-dev
 cd /home/pi/ControlQiniu/x264
-sudo ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
 sudo make
 sudo make install
 
 
 #安装 ffmpeg
 cd /home/pi/ControlQiniu/ffmpeg-3.2.2
-sudo ./configure --prefix=/usr/local/ffmpeg --enable-gpl --enable-libx264
+./configure --prefix=/usr/local/ffmpeg --enable-gpl --enable-libx264
 sudo make # 这一步可能相当相当漫长
 sudo make install
