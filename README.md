@@ -1,6 +1,20 @@
 # 七牛云监控
 
 ## 一、环境搭建
+1. 安装 git
+```bash
+sudo apt-get install git
+```
+
+2. wget 下载 install.sh 文件
+```bash
+wget https://raw.githubusercontent.com/dev-emmon/ControlQiniu/master/install.sh
+```
+
+3. 运行相应的 bash 命令安装软件
+```bash
+bash install
+```
 1. 安装 Nodejs
 ```bash
 # 下 nodejs 二进制包
