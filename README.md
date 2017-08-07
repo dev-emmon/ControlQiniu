@@ -19,7 +19,7 @@ vi /etc/rc.local
 su - pi -c "/usr/local/node/bin/pm2 start ~/oprint/lib/node/edu_live/contor_index.js"
 ```
 
-## 修改合资信息
+## 修改盒子信息
 ```bash
 vi ~/oprint/lib/node/edu_live/contor_index.js
 
@@ -31,7 +31,7 @@ var form = {
 
 ```
 
-**主要**
+**注意**
 如果运行 node 程序时报缺少插件
 ```
 # 安装 nodejs 插件
